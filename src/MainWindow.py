@@ -1,4 +1,4 @@
-import sys
+import os, sys
 import gi
 gi.require_version("Gtk", "3.0")
 
@@ -11,7 +11,7 @@ secret = "JBSWY3DPEHPK3PXP"
 class MainWindow(object):
     def __init__(self, application=None):
         self.Application = application
-        builder = Gtk.Builder.new_from_file(os.path.dirname(os.path.abspath(__file__))+"../ui/main.ui")
+        builder = Gtk.Builder.new_from_file(os.path.dirname(os.path.abspath(__file__))+"/../ui/main.ui")
         win = builder.get_object("ui_main_window")
         self.msg = builder.get_object("ui_main_message")
         self.pin = builder.get_object("ui_main_pin")
