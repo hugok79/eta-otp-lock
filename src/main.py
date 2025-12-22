@@ -16,6 +16,15 @@ class Application(Gtk.Application):
         self.window = None
         GLib.set_prgname("tr.org.etap.otp-lock")
 
+        self.add_main_option(
+            "settings",
+            ord("s"),
+            GLib.OptionFlags(0),
+            GLib.OptionArg(0),
+            "Start settings page",
+            None,
+        )
+
     def do_activate(self):
         if not self.window:
             self.window = MainWindow(self)

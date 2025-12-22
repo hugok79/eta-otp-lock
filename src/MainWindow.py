@@ -8,16 +8,19 @@ gi.require_version("Gtk", "3.0")
 
 from gi.repository import Gtk, GLib
 
-secret = None
 secret_file = "{}/.config/pardus/otp".format(os.environ["HOME"])
-if os.path.isfile(secret_file):
-    with open(secret_file, "r") as f:
-        secret = f.read()
-
-if secret is None:
-    secret = otp.generate_seed(15)
-
 class MainWindow(object):
+    def init_secret(self):
+        self.secret = None
+        if os.path.isfile(secret_file):
+            with open(secret_file, "r") as f:
+                self.secret = f.read()
+
+        if self.secret is None:
+            self.secret = otp.generate_seed(15)
+
+
+
     def __init__(self, application=None):
         self.Application = application
         builder = Gtk.Builder.new_from_file(os.path.dirname(os.path.abspath(__file__))+"/../ui/main.ui")
@@ -28,6 +31,7 @@ class MainWindow(object):
         self.numpad = builder.get_object("ui_main_numpad")
 
         self.cur = ""
+        self.init_secret()
 
         if application:
             self.win.set_application(application)
@@ -45,7 +49,7 @@ class MainWindow(object):
         self.qr = builder.get_object("ui_settings_qr")
         self.secret_entry = builder.get_object("ui_settings_secret")
         self.secret_entry.connect("changed", self.secret_change)
-        self.secret_entry.set_text(str(secret))
+        self.secret_entry.set_text(str(self.secret))
 
         but_random = builder.get_object("ui_settings_random")
         but_random.connect("clicked", self.random_seed_event)
@@ -57,7 +61,7 @@ class MainWindow(object):
         self.win.show_all()
         self.win.connect("destroy", Gtk.main_quit)
 
-        if secret is None or "--settings" in sys.argv:
+        if self.secret is None or "--settings" in sys.argv:
             builder.get_object("ui_box_main").hide()
             stack.set_visible_child_name("settings")
             self.win.resize(1,1)
@@ -80,10 +84,10 @@ class MainWindow(object):
         self.qr.set_from_pixbuf(otp.get_qr_code(secret))
         self.win.resize(1,1)
 
-
     def check(self):
+        secret = otp.generate_otp(self.secret.encode("utf-8"))
         cur = otp.update_otp(secret)
-        print(cur, self.cur)
+        print(cur, self.cur, self.secret, secret)
         if str(cur) == str(self.cur):
             sys.exit(0)
         self.cur = ""
