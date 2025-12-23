@@ -1,23 +1,25 @@
-
 import os, sys
 import random
 import otp
+
+import utils
 
 import gi
 gi.require_version("Gtk", "3.0")
 
 from gi.repository import Gtk, GLib
 
+secret_len = 40
 secret_file = "{}/.config/pardus/otp".format(os.environ["HOME"])
 class MainWindow(object):
     def init_secret(self):
         self.secret = None
         if os.path.isfile(secret_file):
-            with open(secret_file, "r") as f:
+            with open(secret_file, "rb") as f:
                 self.secret = f.read()
 
         if self.secret is None:
-            self.secret = otp.generate_seed(15)
+            self.secret = os.urandom(secret_len)
 
 
 
@@ -47,15 +49,18 @@ class MainWindow(object):
         self.fail_count=0
 
         self.qr = builder.get_object("ui_settings_qr")
-        self.secret_entry = builder.get_object("ui_settings_secret")
-        self.secret_entry.connect("changed", self.secret_change)
-        self.secret_entry.set_text(str(self.secret))
 
         but_random = builder.get_object("ui_settings_random")
         but_random.connect("clicked", self.random_seed_event)
 
         but_save = builder.get_object("ui_settings_save")
         but_save.connect("clicked", self.save_event)
+
+        but_import = builder.get_object("ui_settings_import")
+        but_import.connect("clicked", self.import_event)
+
+        but_export = builder.get_object("ui_settings_export")
+        but_export.connect("clicked", self.export_event)
 
 
         self.win.show_all()
@@ -64,23 +69,44 @@ class MainWindow(object):
         if self.secret is None or "--settings" in sys.argv:
             builder.get_object("ui_box_main").hide()
             stack.set_visible_child_name("settings")
+            self.win.set_resizable(False)
             self.win.resize(1,1)
+            self.secret_change(self.secret)
         else:
             stack.set_visible_child_name("main")
             self.win.fullscreen()
 
     def random_seed_event(self, widget):
-        self.secret_entry.set_text(otp.generate_seed(15))
+        self.secret_change(os.urandom(secret_len))
 
     def save_event(self, widget):
-        with open(secret_file, "w") as f:
-            f.write(self.secret_entry.get_text())
+        with open(secret_file, "wb") as f:
+            f.write(self.secret)
             f.flush()
-        sys.exit(0)
+        if widget:
+            Gtk.main_quit()
 
-    def secret_change(self, entry):
-        print(entry.get_text())
-        secret = otp.Secret(otp.generate_otp(entry.get_text().encode("utf-8")), "etap", "etap")
+    def import_event(self, widget):
+        file = utils.select_file()
+        if file:
+            with open(file, "rb") as f:
+                self.secret = f.read()
+                if len(self.secret) > secret_len:
+                    self.secret = self.secret[:secret_len]
+                print(self.secret)
+            self.save_event(None)
+
+    def export_event(self, widget):
+        file = utils.save_file()
+        if file:
+            with open(file, "wb") as f:
+                f.write(self.secret)
+                f.flush()
+
+
+    def secret_change(self, new_secret):
+        self.secret = new_secret
+        secret = otp.Secret(otp.generate_otp(new_secret), "etap", "etap")
         self.qr.set_from_pixbuf(otp.get_qr_code(secret))
         self.win.resize(1,1)
 
