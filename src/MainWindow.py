@@ -111,7 +111,7 @@ class MainWindow(object):
         self.win.resize(1,1)
 
     def check(self):
-        secret = otp.generate_otp(self.secret.encode("utf-8"))
+        secret = otp.generate_otp(self.secret)
         cur = otp.update_otp(secret)
         print(cur, self.cur, self.secret, secret)
         if str(cur) == str(self.cur):
