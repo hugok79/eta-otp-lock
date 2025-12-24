@@ -16,7 +16,7 @@ class MainWindow(object):
         self.secret = None
         if os.path.isfile(secret_file):
             with open(secret_file, "rb") as f:
-                self.secret = f.read()
+                self.secret = f.read().strip()
 
         if self.secret is None:
             self.secret = os.urandom(secret_len)
@@ -74,7 +74,7 @@ class MainWindow(object):
             self.secret_change(self.secret)
         else:
             stack.set_visible_child_name("main")
-            self.win.fullscreen()
+            #self.win.fullscreen()
 
     def random_seed_event(self, widget):
         self.secret_change(os.urandom(secret_len))
@@ -106,14 +106,13 @@ class MainWindow(object):
 
     def secret_change(self, new_secret):
         self.secret = new_secret
-        secret = otp.Secret(otp.generate_otp(new_secret), "etap", "etap")
+        secret = otp.Secret(new_secret, "etap", "etap")
         self.qr.set_from_pixbuf(otp.get_qr_code(secret))
         self.win.resize(1,1)
 
     def check(self):
-        secret = otp.generate_otp(self.secret)
-        cur = otp.update_otp(secret)
-        print(cur, self.cur, self.secret, secret)
+        cur = otp.update_otp(self.secret)
+        print(cur, self.cur, self.secret)
         if str(cur) == str(self.cur):
             sys.exit(0)
         self.cur = ""
@@ -131,7 +130,7 @@ class MainWindow(object):
         self.pin.set_text(self.format_cur())
         if len(self.cur) == 6:
             self.numpad.set_sensitive(False)
-            GLib.timeout_add(2000, self.check)
+            GLib.timeout_add(1000, self.check)
 
 
     def del_event(self,widget):

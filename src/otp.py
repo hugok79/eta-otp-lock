@@ -29,7 +29,7 @@ def generate_seed(length=10):
         c = chr(random.randint(0,128))
         if c.isprintable():
             ret += c
-    return ret
+    return generate_otp(ret)
 
 
 def update_otp(secret):
@@ -43,7 +43,7 @@ def get_qr_code(secret):
     # Generate the QR code
     totp = pyotp.TOTP(secret.secret)
     uri = totp.provisioning_uri(secret.mail, issuer_name=secret.issuer)
-    qr = qrcode.make(uri)
+    qr = qrcode.make(uri+"&algorithm=SHA1&digits=6&period=30")
 
     # Convert QR code to a format that GTK can use
     with BytesIO() as output:
