@@ -21,9 +21,12 @@ def pam_sm_authenticate(pamh, flags, argv):
     # fetch username
     try:
         user = pamh.get_user(None)
-        passwd = pamh.authtok
     except Exception as e:
         return pamh.PAM_AUTH_ERR
+
+    # fetch otp
+    conv = pamh.conversation(pamh.Message(pamh.PAM_PROMPT_ECHO_OFF, "OTP key: "))
+    passwd = conv.resp
 
     # read config
     config = {}
