@@ -25,8 +25,9 @@ def pam_sm_authenticate(pamh, flags, argv):
         return pamh.PAM_AUTH_ERR
 
     # fetch otp
-    conv = pamh.conversation(pamh.Message(pamh.PAM_PROMPT_ECHO_OFF, "Password: "))
-    passwd = conv.resp
+    if pamh.authtok is None:
+        conv = pamh.conversation(pamh.Message(pamh.PAM_PROMPT_ECHO_OFF, "Password: "))
+        pamh.authtok = conv.resp
 
     # read config
     config = {}
@@ -38,11 +39,10 @@ def pam_sm_authenticate(pamh, flags, argv):
     # check otp
     if user in config:
         otp = pyotp.TOTP(config[user])
-        if otp.now() == passwd:
+        if otp.now() == pamh.authtok:
             return pamh.PAM_SUCCESS
 
     # set auth token if not totp
-    pamh.authtok = passwd
     return pamh.PAM_AUTH_ERR
 
 def pam_sm_setcred(pamh, flags, argv):
