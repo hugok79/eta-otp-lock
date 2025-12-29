@@ -13,7 +13,7 @@ import json
 """
 
 ## Pam config (common-auth)
-## after pam_unix:
+## before pam_unix:
 # auth sufficient pam_python.so /usr/libexec/pam_otp.py
 
 
@@ -25,7 +25,7 @@ def pam_sm_authenticate(pamh, flags, argv):
         return pamh.PAM_AUTH_ERR
 
     # fetch otp
-    conv = pamh.conversation(pamh.Message(pamh.PAM_PROMPT_ECHO_OFF, "OTP key: "))
+    conv = pamh.conversation(pamh.Message(pamh.PAM_PROMPT_ECHO_OFF, "Password: "))
     passwd = conv.resp
 
     # read config
@@ -40,6 +40,9 @@ def pam_sm_authenticate(pamh, flags, argv):
         otp = pyotp.TOTP(config[user])
         if otp.now() == passwd:
             return pamh.PAM_SUCCESS
+
+    # set auth token if not totp
+    pamh.authtok = passwd
     return pamh.PAM_AUTH_ERR
 
 def pam_sm_setcred(pamh, flags, argv):
