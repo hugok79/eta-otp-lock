@@ -8,7 +8,7 @@ import json
 
 """
 {
-    "etapadmin" : "JBSWY3DPEHPK3PXP"
+    "pingu" : "JBSWY3DPEHPK3PXP"
 }
 """
 
@@ -31,9 +31,9 @@ def pam_sm_authenticate(pamh, flags, argv):
 
     # read config
     config = {}
-    if not os.path.isfile("/etc/etap-otp"):
+    if not os.path.isfile("/etc/otp-auth.json"):
         return pamh.PAM_AUTH_ERR
-    with open("/etc/etap-otp", "r") as f:
+    with open("/etc/otp-auth.json", "r") as f:
         config = json.load(f)
 
     # check otp
