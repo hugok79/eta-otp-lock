@@ -1,13 +1,17 @@
-import pyotp
 import sys
 import os
 import json
 
-config_file = "/etc/etap-otp"
+config_file = "/etc/otp-secrets.json"
 config = {}
 try:
-    with open(config_file, "r") as f:
-        config = json.load(f)
+    if os.path.isfile(config_file):
+        with open(config_file, "r") as f:
+            config = json.load(f)
+
+        os.chown(config_file, 0, 0)
+        os.chmod(config_file, 0o600)
+
 except:
     pass
 
@@ -23,16 +27,19 @@ def save(user, secret="JBSWY3DPEHPK3PXP"):
     config[user] = secret
     with open(config_file, "w") as f:
         json.dump(config, f)
+    os.chown(config_file, 0, 0)
+    os.chmod(config_file, 0o600)
 
-def load(user):
+def remove(user):
     if user in config:
-        return config[user]
-    return None
+        config.pop(user)
+    with open(config_file, "w") as f:
+        json.dump(config, f)
+    os.chown(config_file, 0, 0)
+    os.chmod(config_file, 0o600)
 
-def check(user, pin):
-    secret = config[user]
-    totp = pyotp.TOTP(secret)
-    return str(pin) == str(totp.now())
+def status(user):
+    return user in config
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
@@ -42,13 +49,15 @@ if __name__ == "__main__":
             user = input()
         if sys.argv[1] == "save":
             save(user, sys.argv[2])
-        elif sys.argv[1] == "load":
-            print(load(user))
-        elif sys.argv[1] == "check":
-            if check(user, sys.argv[2]):
+        elif sys.argv[1] == "remove":
+            remove(user)
+        elif sys.argv[1] == "status":
+            if status(user):
                 print("true")
                 sys.exit(0)
             else:
                 print("false")
                 sys.exit(1)
+    else:
+        print("actions.py [save|remove|status] (secret)")
 

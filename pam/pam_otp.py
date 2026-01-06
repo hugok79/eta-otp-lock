@@ -16,6 +16,7 @@ import json
 ## before pam_unix:
 # auth sufficient pam_python.so /usr/libexec/pam_otp.py
 
+config_file = "/etc/otp-secrets.json"
 
 def pam_sm_authenticate(pamh, flags, argv):
     # fetch username
@@ -31,9 +32,9 @@ def pam_sm_authenticate(pamh, flags, argv):
 
     # read config
     config = {}
-    if not os.path.isfile("/etc/otp-auth.json"):
+    if not os.path.isfile(config_file):
         return pamh.PAM_AUTH_ERR
-    with open("/etc/otp-auth.json", "r") as f:
+    with open(config_file, "r") as f:
         config = json.load(f)
 
     # check otp
@@ -42,7 +43,6 @@ def pam_sm_authenticate(pamh, flags, argv):
         if otp.now() == pamh.authtok:
             return pamh.PAM_SUCCESS
 
-    # set auth token if not totp
     return pamh.PAM_AUTH_ERR
 
 def pam_sm_setcred(pamh, flags, argv):
