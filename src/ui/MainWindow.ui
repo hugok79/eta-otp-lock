@@ -71,6 +71,7 @@ Kullanıcı parolanız yerine OTP pin kodunuzu da kullanabilirsiniz.</property>
                     <property name="margin-bottom">1</property>
                     <property name="has-frame">False</property>
                     <property name="text" translatable="yes">JBSWY3DPEHPK3PXP</property>
+                    <property name="input-purpose">alpha</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -82,7 +83,7 @@ Kullanıcı parolanız yerine OTP pin kodunuzu da kullanabilirsiniz.</property>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">6 SHA1 30sec</property>
+                    <property name="label" translatable="yes">6  /  SHA1 / 30sec</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>

@@ -28,13 +28,13 @@ class MainWindow:
         self.application = application
         self.ui_window_main.set_application(application)
 
+        self.ui_entry_secret.set_text(self.secret)
+
         # define button functions
         self.ui_button_remove.connect("clicked", self.on_remove_event)
         self.ui_button_help.connect("clicked", self.on_help_event)
         self.ui_button_change.connect("clicked", self.on_change_event)
         self.ui_entry_secret.connect("changed", self.on_entry_change)
-
-        self.ui_entry_secret.set_text(self.secret)
 
         self.ui_window_main.show_all()
 
@@ -52,7 +52,6 @@ class MainWindow:
         pass
 
     def on_change_event(self, widget):
-        print(self.secret)
         subprocess.run(["pkexec", action_file, "save", self.secret])
         self.ui_image_qr.set_from_pixbuf(self.get_qr_code(self.secret))
         self.ui_stack_main.set_visible_child_name("page_qr")
