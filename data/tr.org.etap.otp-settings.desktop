@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Etap otp login settings
+Name[tr]=Etap otp giriş ayarları
+Type=Application
+Comment=Otp key settings
+Comment[tr]=Otp anahtar ayarları
+Terminal=false
+Exec=python3 /usr/share/etap/eta-otp/main.py
+Icon=image-missing
+Categories=Qt;Education;X-Pardus-Apps;
