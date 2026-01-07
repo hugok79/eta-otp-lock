@@ -31,6 +31,10 @@ def save(user, secret="JBSWY3DPEHPK3PXP"):
     os.chown(config_file, 0, 0)
     os.chmod(config_file, 0o600)
 
+def load(user):
+    if user in config:
+        print(config[user])
+
 def remove(user):
     if user in config:
         config.pop(user)
@@ -52,6 +56,8 @@ if __name__ == "__main__":
             save(user, sys.argv[2])
         elif sys.argv[1] == "remove":
             remove(user)
+        elif sys.argv[1] == "load":
+            load(user)
         elif sys.argv[1] == "status":
             if status(user):
                 print("true")
@@ -60,5 +66,5 @@ if __name__ == "__main__":
                 print("false")
                 sys.exit(1)
     else:
-        print("actions.py [save|remove|status] (secret)")
+        print("actions.py [save|load|remove|status] (secret)")
 
