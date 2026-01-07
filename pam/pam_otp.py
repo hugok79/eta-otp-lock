@@ -27,8 +27,11 @@ def pam_sm_authenticate(pamh, flags, argv):
 
     # fetch otp
     if pamh.authtok is None:
-        conv = pamh.conversation(pamh.Message(pamh.PAM_PROMPT_ECHO_OFF, "Password: "))
-        pamh.authtok = conv.resp
+        try:
+            conv = pamh.conversation(pamh.Message(pamh.PAM_PROMPT_ECHO_OFF, "Password: "))
+            pamh.authtok = conv.resp
+        except:
+            return pamh.PAM_AUTH_ERR
 
     # read config
     config = {}
