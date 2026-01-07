@@ -23,7 +23,7 @@ def create_gui(self):
 
         self.ui_window_main.add(box1)
         self.ui_window_main.set_resizable(False)
-        self.ui_window_main.set_size_request(600,600)
+        self.ui_window_main.set_size_request(400,400)
 
 ########## Otp create page ##########
 

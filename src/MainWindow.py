@@ -101,7 +101,7 @@ class MainWindow:
         # Generate the QR code
         totp = pyotp.TOTP(secret)
         uri = totp.provisioning_uri(os.environ["USER"]+"@etap", issuer_name="pardus-etap")
-        qr = qrcode.make(uri+"&algorithm=SHA1&digits=6&period=30")
+        qr = qrcode.make(uri+"&algorithm=SHA1&digits=6&period=30", box_size=5)
 
         # Convert QR code to a format that GTK can use
         with BytesIO() as output:
