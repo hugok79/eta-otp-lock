@@ -156,6 +156,7 @@ class MainWindow:
         dialog.get_content_area().add(box)
 
         entry = Gtk.Entry()
+        entry.set_max_length(16)
         entry.set_placeholder_text("Enter your secret here")
         box.pack_start(entry, True, True, 0)
 
