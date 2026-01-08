@@ -36,7 +36,9 @@ class MainWindow:
 
         self.ui_stack_main.set_visible_child_name("main")
         sp = subprocess.run(["pkexec", action_file, "status"])
-        if sp.returncode != 0:
+        if sp.returncode == 0:
+            sp = subprocess.run(["pkexec", action_file, "load"], capture_output=True)
+            self.secret = sp.stdout.decode("utf-8").strip()
             self.ui_stack_main.set_visible_child_name("settings")
 
 ########### button event functions ###########
@@ -67,18 +69,29 @@ class MainWindow:
     def on_import_event(self, widget):
         filename = self.open_file()
         if filename:
-            with open(filename, "rb") as f:
-                data = pickle.load(f)
-                self.secret = base64.b32encode(data).decode("utf-8")
-            self.ui_stack_main.set_visible_child_name("settings")
-            subprocess.run(["pkexec", action_file, "save", self.secret])
+            try:
+                with open(filename, "rb") as f:
+                    data = pickle.load(f)
+                    if data["user"] != os.environ["USER"]:
+                        self.info_dialog("Invalid OTP", "OTP key user is not you")
+                    self.secret = base64.b32encode(data["secret"]).decode("utf-8")
+                self.ui_stack_main.set_visible_child_name("settings")
+                subprocess.run(["pkexec", action_file, "save", self.secret])
+            except:
+                self.info_dialog("ERROR", "Failed to read OTP key file")
 
     def on_export_event(self, widget):
         filename = self.save_file()
         if filename:
-            with open(filename, "wb") as f:
-                data = base64.b32decode(self.secret.encode("utf-8"))
-                pickle.dump(data, file=f)
+            try:
+                with open(filename, "wb") as f:
+                    data = {}
+                    data["secret"] = base64.b32decode(self.secret.encode("utf-8"))
+                    data["user"] = os.environ["USER"]
+                    pickle.dump(data, file=f)
+            except:
+                self.info_dialog("Error", "Failed to export OTP key file")
+
 
 
 ########### helper functions ###########
@@ -186,3 +199,14 @@ class MainWindow:
             user_input = entry.get_text()
         dialog.destroy()
         return user_input
+
+    def info_dialog(self, msg, desc):
+        dialog = Gtk.MessageDialog(
+            parent=self.ui_window_main,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text=msg,
+        )
+        dialog.format_secondary_text(desc)
+        dialog.run()
+        dialog.destroy()
