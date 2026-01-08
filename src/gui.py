@@ -7,6 +7,7 @@ from gi.repository import Gtk
 def create_gui(self):
 ########## Main widgets ##########
         self.ui_window_main = Gtk.Window()
+        self.ui_window_main.set_title(_("ETA OTP Settings"))
 
         self.ui_stack_main = Gtk.Stack()
 
@@ -31,16 +32,16 @@ def create_gui(self):
         self.ui_box_main.set_spacing(8)
         self.ui_stack_main.add_named(self.ui_box_main, "main")
 
-        self.ui_box_main.pack_start(Gtk.Label(label="Hali hazırda oluşturulmuş\nbir OTP bulunmamaktadır."), False, False, 0)
+        self.ui_box_main.pack_start(Gtk.Label(label=_("OTP is not available.")), False, False, 0)
 
-        self.ui_button_newotp = Gtk.Button(label="Yeni OTP oluştur")
+        self.ui_button_newotp = Gtk.Button(label=_("Generate a new OTP"))
         self.ui_box_main.pack_start(self.ui_button_newotp, False, False, 0)
 
-        self.ui_button_import = Gtk.Button(label="OTP dosyasını içe aktar")
+        self.ui_button_import = Gtk.Button(label=_("Import OTP from File"))
         self.ui_box_main.pack_start(self.ui_button_import, False, False, 0)
 
 
-        self.ui_button_fromkey = Gtk.Button(label="Anahtar ile oluştur")
+        self.ui_button_fromkey = Gtk.Button(label=_("Generate OTP from key"))
         self.ui_box_main.pack_start(self.ui_button_fromkey, False, False, 0)
 
 ########## Otp settings page ##########
@@ -49,15 +50,15 @@ def create_gui(self):
         self.ui_box_settings.set_spacing(8)
         self.ui_stack_main.add_named(self.ui_box_settings, "settings")
 
-        self.ui_box_settings.pack_start(Gtk.Label(label="Kullanıcınıza ait\nbir OTP bulunmaktadır."), False, False, 0)
+        self.ui_box_settings.pack_start(Gtk.Label(label=_("OTP available.")), False, False, 0)
 
-        self.ui_button_show = Gtk.Button(label="QR / Anahtar Göster")
+        self.ui_button_show = Gtk.Button(label=_("Show OTP QR/Key"))
         self.ui_box_settings.pack_start(self.ui_button_show, False, False, 0)
 
-        self.ui_button_export = Gtk.Button(label="OTP dosyasını dışa aktar")
+        self.ui_button_export = Gtk.Button(label=_("Export OTP to file"))
         self.ui_box_settings.pack_start(self.ui_button_export, False, False, 0)
 
-        self.ui_button_delete = Gtk.Button(label="OTP Sil")
+        self.ui_button_delete = Gtk.Button(label=_("Remove OTP"))
         self.ui_box_settings.pack_start(self.ui_button_delete, False, False, 0)
 
 ########## QR / Key page ##########

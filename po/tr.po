@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-08 14:25+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/MainWindow.py:89
+msgid "Invalid OTP"
+msgstr "Geçersiz OTP"
+
+#: src/MainWindow.py:89
+msgid "OTP user is not you"
+msgstr "OTP kullanıcısı siz değilsiniz"
+
+#: src/MainWindow.py:94
+msgid "Failed to read OTP file"
+msgstr "OTP dosyası okunamadı"
+
+#: src/MainWindow.py:106
+msgid "Error"
+msgstr "Hata"
+
+#: src/MainWindow.py:106
+msgid "Failed to export OTP key file"
+msgstr "OTP anahtarı dosyaya aktarılamadı"
+
+#: src/MainWindow.py:147
+msgid "Select a File"
+msgstr "Bir dosya seçin"
+
+#: src/MainWindow.py:155 src/MainWindow.py:176
+msgid "OTP keys"
+msgstr "OTP anahtarları"
+
+#: src/MainWindow.py:168
+msgid "Save a File"
+msgstr "Bir dosya kaydedin"
+
+#: src/MainWindow.py:191
+msgid "Enter a Secret"
+msgstr "Bir Secret girin"
+
+#: src/MainWindow.py:203
+msgid "Enter your key here"
+msgstr "Anahtarınızı buraya girin"
+
+#: src/gui.py:10
+msgid "ETA OTP Settings"
+msgstr "ETA OTP Ayarları"
+
+#: src/gui.py:35
+msgid "OTP is not available."
+msgstr "OTP kullanılabilir değil."
+
+#: src/gui.py:37
+msgid "Generate a new OTP"
+msgstr "Yeni OTP oluştur"
+
+#: src/gui.py:40
+msgid "Import OTP from File"
+msgstr "Dosyadan OTP içe aktar"
+
+#: src/gui.py:44
+msgid "Generate OTP from key"
+msgstr "Anahtardan OTP oluştur"
+
+#: src/gui.py:53
+msgid "OTP available."
+msgstr "OTP kullanılabilir."
+
+#: src/gui.py:55
+msgid "Show OTP QR/Key"
+msgstr "QR/Anahtar göster"
+
+#: src/gui.py:58
+msgid "Export OTP to file"
+msgstr "Dosyaya OTP aktar"
+
+#: src/gui.py:61
+msgid "Remove OTP"
+msgstr "OTP Kaldır"

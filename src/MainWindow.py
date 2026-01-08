@@ -11,7 +11,20 @@ import pickle
 import qrcode
 from io import BytesIO
 
-from gui import create_gui
+import locale
+from locale import gettext as _
+
+# Translation Constants:
+APPNAME = "eta-otp-lock"
+TRANSLATIONS_PATH = "/usr/share/locale"
+
+# Translation functions:
+locale.bindtextdomain(APPNAME, TRANSLATIONS_PATH)
+locale.textdomain(APPNAME)
+
+
+import gui
+gui._ = _
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib, Gio, GdkPixbuf
@@ -21,7 +34,7 @@ class MainWindow:
     def __init__(self, application):
         self.secret = self.generate_secret()
 
-        create_gui(self)
+        gui.create_gui(self)
         self.application = application
         self.ui_window_main.set_application(application)
 
@@ -73,12 +86,12 @@ class MainWindow:
                 with open(filename, "rb") as f:
                     data = pickle.load(f)
                     if data["user"] != os.environ["USER"]:
-                        self.info_dialog("Invalid OTP", "OTP key user is not you")
+                        self.info_dialog(_("Invalid OTP"), _("OTP user is not you"))
                     self.secret = base64.b32encode(data["secret"]).decode("utf-8")
                 self.ui_stack_main.set_visible_child_name("settings")
                 subprocess.run(["pkexec", action_file, "save", self.secret])
             except:
-                self.info_dialog("ERROR", "Failed to read OTP key file")
+                self.info_dialog("ERROR", _("Failed to read OTP file"))
 
     def on_export_event(self, widget):
         filename = self.save_file()
@@ -90,7 +103,7 @@ class MainWindow:
                     data["user"] = os.environ["USER"]
                     pickle.dump(data, file=f)
             except:
-                self.info_dialog("Error", "Failed to export OTP key file")
+                self.info_dialog(_("Error"), _("Failed to export OTP key file"))
 
 
 
@@ -131,7 +144,7 @@ class MainWindow:
 
     def open_file(self):
         dialog = Gtk.FileChooserDialog(
-            title="Select a File",
+            title=_("Select a File"),
             parent=self.ui_window_main,
             action=Gtk.FileChooserAction.OPEN
         )
@@ -139,7 +152,7 @@ class MainWindow:
         dialog.add_button(Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
 
         filter = Gtk.FileFilter()
-        filter.set_name("OTP keys")
+        filter.set_name(_("OTP keys"))
         filter.add_pattern("*.totp")
         dialog.add_filter(filter)
 
@@ -152,7 +165,7 @@ class MainWindow:
 
     def save_file(self):
         dialog = Gtk.FileChooserDialog(
-            title="Save a File",
+            title=_("Save a File"),
             parent=self.ui_window_main,
             action=Gtk.FileChooserAction.SAVE
         )
@@ -160,7 +173,7 @@ class MainWindow:
         dialog.add_button(Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
 
         filter = Gtk.FileFilter()
-        filter.set_name("OTP keys")
+        filter.set_name(_("OTP keys"))
         filter.add_pattern("*.totp")
         dialog.add_filter(filter)
 
@@ -175,7 +188,7 @@ class MainWindow:
 
     def input_secret(self):
         dialog = Gtk.Dialog(
-            title="Enter a Secret",
+            title=_("Enter a Secret"),
             parent=self.ui_window_main
         )
         dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
@@ -187,7 +200,7 @@ class MainWindow:
 
         entry = Gtk.Entry()
         entry.set_max_length(16)
-        entry.set_placeholder_text("Enter your secret here")
+        entry.set_placeholder_text(_("Enter your key here"))
         box.pack_start(entry, True, True, 0)
 
         dialog.show_all()

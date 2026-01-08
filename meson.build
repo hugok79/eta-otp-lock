@@ -1,4 +1,6 @@
-project('eta-otp')
+project('eta-otp-lock')
+
+subdir('po')
 
 install_subdir('src', install_dir: '/usr/share/etap/eta-otp', strip_directory: true)
 install_data('pam/pam_otp.py', install_dir: '/usr/libexec/')
