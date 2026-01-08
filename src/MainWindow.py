@@ -7,6 +7,7 @@ import subprocess
 import random
 import base64
 import pyotp
+import pickle
 import qrcode
 from io import BytesIO
 
@@ -27,6 +28,7 @@ class MainWindow:
         self.ui_button_newotp.connect("clicked", self.on_newotp_event)
         self.ui_button_show.connect("clicked", self.on_show_event)
         self.ui_button_import.connect("clicked", self.on_import_event)
+        self.ui_button_export.connect("clicked", self.on_export_event)
         self.ui_button_delete.connect("clicked", self.on_delete_event)
         self.ui_button_fromkey.connect("clicked", self.on_fromkey_event)
 
@@ -122,6 +124,12 @@ class MainWindow:
         )
         dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
         dialog.add_button(Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
+
+        filter = Gtk.FileFilter()
+        filter.set_name("OTP keys")
+        filter.add_pattern("*.totp")
+        dialog.add_filter(filter)
+
         response = dialog.run()
         filename = None
         if response == Gtk.ResponseType.OK:
@@ -137,10 +145,18 @@ class MainWindow:
         )
         dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
         dialog.add_button(Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
+
+        filter = Gtk.FileFilter()
+        filter.set_name("OTP keys")
+        filter.add_pattern("*.totp")
+        dialog.add_filter(filter)
+
         response = dialog.run()
         filename = None
         if response == Gtk.ResponseType.OK:
             filename = dialog.get_filename()
+            if not filename.endswith(".totp"):
+                filename += ".totp"
         dialog.destroy()
         return filename
 
@@ -151,6 +167,7 @@ class MainWindow:
         )
         dialog.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL)
         dialog.add_button(Gtk.STOCK_OK, Gtk.ResponseType.OK)
+
 
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         dialog.get_content_area().add(box)
