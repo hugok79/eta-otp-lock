@@ -10,6 +10,9 @@ Rules-Requires-Root: no
 Package: eta-otp-lock
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         python3-pyotp,
+         python3-qrcode
 Description: Eta otp lock
  Otp lock for etap
