@@ -126,11 +126,13 @@ class MainWindow:
         return base64.b32encode(random_bytes).decode("utf-8")
 
     def is_base32(self, data):
-        try:
-            base64.b32decode(data)
-            return True
-        except:
+        if len(data) % 4 > 0:
             return False
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
+        for c in data:
+            if not c in alphabet:
+                return False
+        return True
 
     def get_qr_code(self, secret):
         # Generate the QR code
