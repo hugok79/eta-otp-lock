@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-08 14:25+0300\n"
+"POT-Creation-Date: 2026-01-09 09:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,43 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.py:89
+#: src/MainWindow.py:96
 msgid "Invalid OTP"
 msgstr "Geçersiz OTP"
 
-#: src/MainWindow.py:89
+#: src/MainWindow.py:96
 msgid "OTP user is not you"
 msgstr "OTP kullanıcısı siz değilsiniz"
 
-#: src/MainWindow.py:94
+#: src/MainWindow.py:101
 msgid "Failed to read OTP file"
 msgstr "OTP dosyası okunamadı"
 
-#: src/MainWindow.py:106
+#: src/MainWindow.py:113
 msgid "Error"
 msgstr "Hata"
 
-#: src/MainWindow.py:106
+#: src/MainWindow.py:113
 msgid "Failed to export OTP key file"
 msgstr "OTP anahtarı dosyaya aktarılamadı"
 
-#: src/MainWindow.py:147
+#: src/MainWindow.py:154
 msgid "Select a File"
 msgstr "Bir dosya seçin"
 
-#: src/MainWindow.py:155 src/MainWindow.py:176
+#: src/MainWindow.py:162 src/MainWindow.py:183
 msgid "OTP keys"
 msgstr "OTP anahtarları"
 
-#: src/MainWindow.py:168
+#: src/MainWindow.py:175
 msgid "Save a File"
 msgstr "Bir dosya kaydedin"
 
-#: src/MainWindow.py:191
+#: src/MainWindow.py:198
 msgid "Enter a Secret"
 msgstr "Bir Secret girin"
 
-#: src/MainWindow.py:203
+#: src/MainWindow.py:210
 msgid "Enter your key here"
 msgstr "Anahtarınızı buraya girin"
 
@@ -61,34 +61,42 @@ msgstr "Anahtarınızı buraya girin"
 msgid "ETA OTP Settings"
 msgstr "ETA OTP Ayarları"
 
-#: src/gui.py:35
+#: src/gui.py:39
 msgid "OTP is not available."
 msgstr "OTP kullanılabilir değil."
 
-#: src/gui.py:37
+#: src/gui.py:41
 msgid "Generate a new OTP"
 msgstr "Yeni OTP oluştur"
 
-#: src/gui.py:40
+#: src/gui.py:44
 msgid "Import OTP from File"
 msgstr "Dosyadan OTP içe aktar"
 
-#: src/gui.py:44
+#: src/gui.py:48
 msgid "Generate OTP from key"
 msgstr "Anahtardan OTP oluştur"
 
-#: src/gui.py:53
+#: src/gui.py:57
 msgid "OTP available."
 msgstr "OTP kullanılabilir."
 
-#: src/gui.py:55
+#: src/gui.py:59
 msgid "Show OTP QR/Key"
 msgstr "QR/Anahtar göster"
 
-#: src/gui.py:58
+#: src/gui.py:62
 msgid "Export OTP to file"
 msgstr "Dosyaya OTP aktar"
 
-#: src/gui.py:61
+#: src/gui.py:65
 msgid "Remove OTP"
 msgstr "OTP Kaldır"
+
+#: src/gui.py:85
+msgid "Back"
+msgstr "Geri"
+
+#: src/gui.py:86
+msgid "Help"
+msgstr "Yardım"

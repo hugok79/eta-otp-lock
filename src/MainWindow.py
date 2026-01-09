@@ -44,8 +44,10 @@ class MainWindow:
         self.ui_button_export.connect("clicked", self.on_export_event)
         self.ui_button_delete.connect("clicked", self.on_delete_event)
         self.ui_button_fromkey.connect("clicked", self.on_fromkey_event)
+        self.ui_button_qr_back.connect("clicked", self.on_qr_back_event)
 
         self.ui_window_main.show_all()
+        self.ui_button_qr_back.hide()
 
         self.ui_stack_main.set_visible_child_name("main")
         sp = subprocess.run(["pkexec", action_file, "status"])
@@ -56,6 +58,10 @@ class MainWindow:
 
 ########### button event functions ###########
 
+    def on_qr_back_event(self, widget):
+        self.ui_button_qr_back.hide()
+        self.ui_stack_main.set_visible_child_name("settings")
+
     def on_newotp_event(self, widget):
         self.secret = self.generate_secret()
         self.ui_stack_main.set_visible_child_name("settings")
@@ -64,6 +70,7 @@ class MainWindow:
     def on_show_event(self, widget):
         self.update_qr()
         self.ui_stack_main.set_visible_child_name("qr")
+        self.ui_button_qr_back.show()
 
     def on_delete_event(self, widget):
         self.ui_stack_main.set_visible_child_name("main")

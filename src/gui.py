@@ -9,6 +9,10 @@ def create_gui(self):
         self.ui_window_main = Gtk.Window()
         self.ui_window_main.set_title(_("ETA OTP Settings"))
 
+        headerbar = Gtk.HeaderBar()
+        self.ui_window_main.set_titlebar(headerbar)
+        headerbar.set_show_close_button(True)
+
         self.ui_stack_main = Gtk.Stack()
 
         box1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -75,5 +79,11 @@ def create_gui(self):
         self.ui_label_secret = Gtk.Label(label="JBSWY3DPEHPK3PXP")
         self.ui_box_qr.pack_start(self.ui_label_secret, False, False, 0)
 
+########## Headerbar ##########
 
-
+        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.ui_button_qr_back = Gtk.Button(label=_("Back"))
+        self.ui_button_help = Gtk.Button(label=_("Help"))
+        button_box.pack_start(self.ui_button_help, False, False, 3)
+        button_box.pack_start(self.ui_button_qr_back, False, False, 3)
+        headerbar.pack_start(button_box)
