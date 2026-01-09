@@ -128,7 +128,7 @@ class MainWindow:
     def is_base32(self, data):
         if len(data) % 4 > 0:
             return False
-        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567="
         for c in data:
             if not c in alphabet:
                 return False
