@@ -7,11 +7,11 @@ from gi.repository import Gtk
 def create_gui(self):
 ########## Main widgets ##########
         self.ui_window_main = Gtk.Window()
-        self.ui_window_main.set_title(_("ETA OTP Settings"))
 
         headerbar = Gtk.HeaderBar()
         self.ui_window_main.set_titlebar(headerbar)
         headerbar.set_show_close_button(True)
+        headerbar.set_title(_("OTP Login Settings"))
 
         self.ui_stack_main = Gtk.Stack()
 

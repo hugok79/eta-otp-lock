@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-09 09:59+0300\n"
+"POT-Creation-Date: 2026-01-28 17:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,48 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.py:96
-msgid "Invalid OTP"
-msgstr ""
-
-#: src/MainWindow.py:96
-msgid "OTP user is not you"
-msgstr ""
-
-#: src/MainWindow.py:101
-msgid "Failed to read OTP file"
-msgstr ""
-
-#: src/MainWindow.py:113
-msgid "Error"
-msgstr ""
-
-#: src/MainWindow.py:113
-msgid "Failed to export OTP key file"
-msgstr ""
-
-#: src/MainWindow.py:154
-msgid "Select a File"
-msgstr ""
-
-#: src/MainWindow.py:162 src/MainWindow.py:183
-msgid "OTP keys"
-msgstr ""
-
-#: src/MainWindow.py:175
-msgid "Save a File"
-msgstr ""
-
-#: src/MainWindow.py:198
-msgid "Enter a Secret"
-msgstr ""
-
-#: src/MainWindow.py:210
-msgid "Enter your key here"
-msgstr ""
-
-#: src/gui.py:10
-msgid "ETA OTP Settings"
+#: src/gui.py:14
+msgid "OTP Login Settings"
 msgstr ""
 
 #: src/gui.py:39
@@ -99,4 +59,44 @@ msgstr ""
 
 #: src/gui.py:86
 msgid "Help"
+msgstr ""
+
+#: src/MainWindow.py:100
+msgid "Invalid OTP"
+msgstr ""
+
+#: src/MainWindow.py:100
+msgid "OTP user is not you"
+msgstr ""
+
+#: src/MainWindow.py:105
+msgid "Failed to read OTP file"
+msgstr ""
+
+#: src/MainWindow.py:117
+msgid "Error"
+msgstr ""
+
+#: src/MainWindow.py:117
+msgid "Failed to export OTP key file"
+msgstr ""
+
+#: src/MainWindow.py:160
+msgid "Select a File"
+msgstr ""
+
+#: src/MainWindow.py:168 src/MainWindow.py:189
+msgid "OTP keys"
+msgstr ""
+
+#: src/MainWindow.py:181
+msgid "Save a File"
+msgstr ""
+
+#: src/MainWindow.py:204
+msgid "Enter a Secret"
+msgstr ""
+
+#: src/MainWindow.py:216
+msgid "Enter your key here"
 msgstr ""
