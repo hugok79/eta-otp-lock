@@ -51,10 +51,14 @@ class MainWindow:
 
         self.ui_stack_main.set_visible_child_name("main")
         sp = subprocess.run(["pkexec", action_file, "status"])
-        if sp.returncode == 0:
+        if sp.returncode == 1:
+            pass
+        elif sp.returncode == 0:
             sp = subprocess.run(["pkexec", action_file, "load"], capture_output=True)
             self.secret = sp.stdout.decode("utf-8").strip()
             self.ui_stack_main.set_visible_child_name("settings")
+        else:
+            self.application.quit()
 
 ########### button event functions ###########
 
