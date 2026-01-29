@@ -1,5 +1,16 @@
-eta-otp-lock (1.0.0) UNRELEASED; urgency=low
+eta-otp-lock (1.0.0) unstable; urgency=medium
 
-  * Initial release. 
+  [ Ali Riza KESKIN ]
+  * translation
+  * qr back button and help button added
+  * better check base32
+  * fix missing char
+  * polkit rule auth method changed
+  * icon added
+  * title fix
 
-Ali Riza KESKIN --  <aliriza.keskin@pardus.org.tr>  Fri, 20 Jun 2025 10:40:29 +0300
+  [ Fatih Altun ]
+  * Update debian/control
+  * Update debian/copyright
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Thu, 29 Jan 2026 08:13:43 +0000
