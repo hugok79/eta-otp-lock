@@ -1,7 +1,10 @@
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf, Gio
+
+import qrcode
+from io import BytesIO
 
 
 def create_gui(self):
@@ -87,3 +90,22 @@ def create_gui(self):
         button_box.pack_start(self.ui_button_help, False, False, 3)
         button_box.pack_start(self.ui_button_qr_back, False, False, 3)
         headerbar.pack_start(button_box)
+
+        popover = Gtk.Popover()
+        popover.set_relative_to(self.ui_button_help)
+        def help_clicked(widget):
+           popover.popup()
+        self.ui_button_help.connect("clicked", help_clicked)
+        help_img = Gtk.Image()
+        popover.add(help_img)
+        help_img.show()
+        qr = qrcode.make("https://rehber.etap.org.tr/dokumanlar/otp-giris", box_size=5)
+
+        # Convert QR code to a format that GTK can use
+        with BytesIO() as output:
+            qr.save(output, format="PNG")
+            output.seek(0)
+            # Create a Gio.MemoryInputStream from the BytesIO object
+            memory_stream = Gio.MemoryInputStream.new_from_data(output.getvalue(), None)
+            help_img.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_stream(memory_stream, None))
+
