@@ -1,3 +1,11 @@
+eta-otp-lock (1.0.1) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * add help button event
+  * update icon
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Thu, 29 Jan 2026 16:15:49 +0000
+
 eta-otp-lock (1.0.0) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
