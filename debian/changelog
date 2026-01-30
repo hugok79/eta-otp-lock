@@ -1,3 +1,10 @@
+eta-otp-lock (1.0.2) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * OTP->Pin (stupid translation)
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 30 Jan 2026 15:18:48 +0000
+
 eta-otp-lock (1.0.1) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
