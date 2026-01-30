@@ -14,7 +14,7 @@ def create_gui(self):
         headerbar = Gtk.HeaderBar()
         self.ui_window_main.set_titlebar(headerbar)
         headerbar.set_show_close_button(True)
-        headerbar.set_title(_("OTP Login Settings"))
+        headerbar.set_title(_("Pin Login Settings"))
 
         self.ui_stack_main = Gtk.Stack()
 
@@ -39,16 +39,16 @@ def create_gui(self):
         self.ui_box_main.set_spacing(8)
         self.ui_stack_main.add_named(self.ui_box_main, "main")
 
-        self.ui_box_main.pack_start(Gtk.Label(label=_("OTP is not available.")), False, False, 0)
+        self.ui_box_main.pack_start(Gtk.Label(label=_("Pin is not available.")), False, False, 0)
 
-        self.ui_button_newotp = Gtk.Button(label=_("Generate a new OTP"))
+        self.ui_button_newotp = Gtk.Button(label=_("Generate a new Pin"))
         self.ui_box_main.pack_start(self.ui_button_newotp, False, False, 0)
 
-        self.ui_button_import = Gtk.Button(label=_("Import OTP from File"))
+        self.ui_button_import = Gtk.Button(label=_("Import Pin from File"))
         self.ui_box_main.pack_start(self.ui_button_import, False, False, 0)
 
 
-        self.ui_button_fromkey = Gtk.Button(label=_("Generate OTP from key"))
+        self.ui_button_fromkey = Gtk.Button(label=_("Generate Pin from key"))
         self.ui_box_main.pack_start(self.ui_button_fromkey, False, False, 0)
 
 ########## Otp settings page ##########
@@ -57,15 +57,15 @@ def create_gui(self):
         self.ui_box_settings.set_spacing(8)
         self.ui_stack_main.add_named(self.ui_box_settings, "settings")
 
-        self.ui_box_settings.pack_start(Gtk.Label(label=_("OTP available.")), False, False, 0)
+        self.ui_box_settings.pack_start(Gtk.Label(label=_("Pin available.")), False, False, 0)
 
-        self.ui_button_show = Gtk.Button(label=_("Show OTP QR/Key"))
+        self.ui_button_show = Gtk.Button(label=_("Show Pin QR/Key"))
         self.ui_box_settings.pack_start(self.ui_button_show, False, False, 0)
 
-        self.ui_button_export = Gtk.Button(label=_("Export OTP to file"))
+        self.ui_button_export = Gtk.Button(label=_("Export Pin to file"))
         self.ui_box_settings.pack_start(self.ui_button_export, False, False, 0)
 
-        self.ui_button_delete = Gtk.Button(label=_("Remove OTP"))
+        self.ui_button_delete = Gtk.Button(label=_("Remove Pin"))
         self.ui_box_settings.pack_start(self.ui_button_delete, False, False, 0)
 
 ########## QR / Key page ##########
@@ -99,7 +99,7 @@ def create_gui(self):
         help_img = Gtk.Image()
         popover.add(help_img)
         help_img.show()
-        qr = qrcode.make("https://rehber.etap.org.tr/dokumanlar/otp-giris", box_size=5)
+        qr = qrcode.make("https://rehber.etap.org.tr/dokumanlar/pin-giris", box_size=5)
 
         # Convert QR code to a format that GTK can use
         with BytesIO() as output:

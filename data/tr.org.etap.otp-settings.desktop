@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-Name=Otp Login Settings
-Name[tr]=Otp Giriş Ayarları
+Name=Pin Login Settings
+Name[tr]=Pin Giriş Ayarları
 Type=Application
 Comment=Otp key settings
 Comment[tr]=Otp anahtar ayarları

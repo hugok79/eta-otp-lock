@@ -97,12 +97,12 @@ class MainWindow:
                 with open(filename, "rb") as f:
                     data = pickle.load(f)
                     if data["user"] != os.environ["USER"]:
-                        self.info_dialog(_("Invalid OTP"), _("OTP user is not you"))
+                        self.info_dialog(_("Invalid Pin"), _("Pin user is not you"))
                     self.secret = base64.b32encode(data["secret"]).decode("utf-8")
                 self.ui_stack_main.set_visible_child_name("settings")
                 subprocess.run(["pkexec", action_file, "save", self.secret])
             except:
-                self.info_dialog("ERROR", _("Failed to read OTP file"))
+                self.info_dialog("ERROR", _("Failed to read Pin file"))
 
     def on_export_event(self, widget):
         filename = self.save_file()
@@ -114,7 +114,7 @@ class MainWindow:
                     data["user"] = os.environ["USER"]
                     pickle.dump(data, file=f)
             except:
-                self.info_dialog(_("Error"), _("Failed to export OTP key file"))
+                self.info_dialog(_("Error"), _("Failed to export Pin key file"))
 
 
 
@@ -165,7 +165,7 @@ class MainWindow:
         dialog.add_button(Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
 
         filter = Gtk.FileFilter()
-        filter.set_name(_("OTP keys"))
+        filter.set_name(_("Pin keys"))
         filter.add_pattern("*.totp")
         dialog.add_filter(filter)
 
@@ -186,7 +186,7 @@ class MainWindow:
         dialog.add_button(Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
 
         filter = Gtk.FileFilter()
-        filter.set_name(_("OTP keys"))
+        filter.set_name(_("Pin keys"))
         filter.add_pattern("*.totp")
         dialog.add_filter(filter)
 

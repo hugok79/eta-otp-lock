@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-28 17:02+0300\n"
+"POT-Creation-Date: 2026-01-30 17:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,77 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gui.py:14
-msgid "OTP Login Settings"
-msgstr "OTP Giriş Ayarları"
-
-#: src/gui.py:39
-msgid "OTP is not available."
-msgstr "OTP kullanılabilir değil."
-
-#: src/gui.py:41
-msgid "Generate a new OTP"
-msgstr "Yeni OTP oluştur"
-
-#: src/gui.py:44
-msgid "Import OTP from File"
-msgstr "Dosyadan OTP içe aktar"
-
-#: src/gui.py:48
-msgid "Generate OTP from key"
-msgstr "Anahtardan OTP oluştur"
-
-#: src/gui.py:57
-msgid "OTP available."
-msgstr "OTP kullanılabilir."
-
-#: src/gui.py:59
-msgid "Show OTP QR/Key"
-msgstr "QR/Anahtar göster"
-
-#: src/gui.py:62
-msgid "Export OTP to file"
-msgstr "Dosyaya OTP aktar"
-
-#: src/gui.py:65
-msgid "Remove OTP"
-msgstr "OTP Kaldır"
-
-#: src/gui.py:85
-msgid "Back"
-msgstr "Geri"
-
-#: src/gui.py:86
-msgid "Help"
-msgstr "Yardım"
+#: src/MainWindow.py:100
+msgid "Invalid Pin"
+msgstr "Geçersiz Pin"
 
 #: src/MainWindow.py:100
-msgid "Invalid OTP"
-msgstr "Geçersiz OTP"
-
-#: src/MainWindow.py:100
-msgid "OTP user is not you"
-msgstr "OTP kullanıcısı siz değilsiniz"
+msgid "Pin user is not you"
+msgstr "Pin kullanıcısı siz değilsiniz"
 
 #: src/MainWindow.py:105
-msgid "Failed to read OTP file"
-msgstr "OTP dosyası okunamadı"
+msgid "Failed to read Pin file"
+msgstr "Pin dosyası okunamadı"
 
 #: src/MainWindow.py:117
 msgid "Error"
 msgstr "Hata"
 
 #: src/MainWindow.py:117
-msgid "Failed to export OTP key file"
-msgstr "OTP anahtarı dosyaya aktarılamadı"
+msgid "Failed to export Pin key file"
+msgstr "Pin anahtarı dosyaya aktarılamadı"
 
 #: src/MainWindow.py:160
 msgid "Select a File"
 msgstr "Bir dosya seçin"
 
 #: src/MainWindow.py:168 src/MainWindow.py:189
-msgid "OTP keys"
-msgstr "OTP anahtarları"
+msgid "Pin keys"
+msgstr "Pin anahtarları"
 
 #: src/MainWindow.py:181
 msgid "Save a File"
@@ -100,3 +56,47 @@ msgstr "Bir Secret girin"
 #: src/MainWindow.py:216
 msgid "Enter your key here"
 msgstr "Anahtarınızı buraya girin"
+
+#: src/gui.py:17
+msgid "Pin Login Settings"
+msgstr "Pin Giriş Ayarları"
+
+#: src/gui.py:42
+msgid "Pin is not available."
+msgstr "Pin kullanılabilir değil."
+
+#: src/gui.py:44
+msgid "Generate a new Pin"
+msgstr "Yeni Pin oluştur"
+
+#: src/gui.py:47
+msgid "Import Pin from File"
+msgstr "Dosyadan Pin içe aktar"
+
+#: src/gui.py:51
+msgid "Generate Pin from key"
+msgstr "Anahtardan Pin oluştur"
+
+#: src/gui.py:60
+msgid "Pin available."
+msgstr "Pin kullanılabilir."
+
+#: src/gui.py:62
+msgid "Show Pin QR/Key"
+msgstr "Pin QR/Anahtar göster"
+
+#: src/gui.py:65
+msgid "Export Pin to file"
+msgstr "Dosyaya Pin aktar"
+
+#: src/gui.py:68
+msgid "Remove Pin"
+msgstr "Pin Kaldır"
+
+#: src/gui.py:88
+msgid "Back"
+msgstr "Geri"
+
+#: src/gui.py:89
+msgid "Help"
+msgstr "Yardım"
