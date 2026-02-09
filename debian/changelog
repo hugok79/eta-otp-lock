@@ -1,3 +1,13 @@
+eta-otp-lock (1.0.3) unstable; urgency=medium
+
+  [ Ali Riza KESKIN ]
+  * fix wrong save button text
+
+  [ Fatih Altun ]
+  * Update policy text
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 09 Feb 2026 12:00:01 +0000
+
 eta-otp-lock (1.0.2) unstable; urgency=medium
 
   [ Ali Riza KESKIN ]
