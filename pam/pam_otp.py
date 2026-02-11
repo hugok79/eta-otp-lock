@@ -8,7 +8,8 @@ import json
 
 """
 {
-    "pingu" : "JBSWY3DPEHPK3PXP"
+    "pingu"  : "JBSWY3DPEHPK3PXP",
+    "@users" : "4EF6A46F1BCF2345"
 }
 """
 
@@ -40,10 +41,20 @@ def pam_sm_authenticate(pamh, flags, argv):
     with open(config_file, "r") as f:
         config = json.load(f)
 
+
+    def check_otp(user):
+        otp = pyotp.TOTP(config[user])
+        return (otp.now() == pamh.authtok)
+
+    # check otp by group
+    for group in grp.getgrall():
+        if user in group.gr_mem and f"@{group.gr_name}" in config:
+            if check_otp(f"@{group.gr_name}"):
+                return pamh.PAM_SUCCESS
+
     # check otp
     if user in config:
-        otp = pyotp.TOTP(config[user])
-        if otp.now() == pamh.authtok:
+        if check_otp(user):
             return pamh.PAM_SUCCESS
 
     return pamh.PAM_AUTH_ERR
