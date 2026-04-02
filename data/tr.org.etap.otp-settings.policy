@@ -9,6 +9,7 @@
     <action id="tr.org.etap.otp-settings">
         <description>Run Etap OTP</description>
         <message>Please enter the password you used to log in to this session.</message>
+        <message xml:lang="pt">Introduza a palavra-passe que utilizou para iniciar sessão.</message>
         <message xml:lang="tr">Lütfen bu oturumu açarken kullandığınız şifreyi giriniz.</message>
         <defaults>
             <allow_any>auth_self_keep</allow_any>

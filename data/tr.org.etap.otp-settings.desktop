@@ -1,9 +1,11 @@
 [Desktop Entry]
 Version=1.0
 Name=Pin Login Settings
+Name[pt]=Definições de acesso PIN
 Name[tr]=Pin Giriş Ayarları
 Type=Application
 Comment=Otp key settings
+Comment[pt]=Definições de chave OTP
 Comment[tr]=Otp anahtar ayarları
 Terminal=false
 Exec=python3 /usr/share/etap/eta-otp/main.py

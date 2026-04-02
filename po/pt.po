@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-30 17:51+0300\n"
+"PO-Revision-Date: 2026-03-31 14:29+0100\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: src/MainWindow.py:100
+msgid "Invalid Pin"
+msgstr "PIN inválido"
+
+#: src/MainWindow.py:100
+msgid "Pin user is not you"
+msgstr "Não é o utilizador do PIN"
+
+#: src/MainWindow.py:105
+msgid "Failed to read Pin file"
+msgstr "Não foi possível ler o ficheiro PIN"
+
+#: src/MainWindow.py:117
+msgid "Error"
+msgstr "Erro"
+
+#: src/MainWindow.py:117
+msgid "Failed to export Pin key file"
+msgstr "Não foi possível exportar o ficheiro da chave PIN"
+
+#: src/MainWindow.py:160
+msgid "Select a File"
+msgstr "Selecionar um ficheiro"
+
+#: src/MainWindow.py:168 src/MainWindow.py:189
+msgid "Pin keys"
+msgstr "Chaves do PIN"
+
+#: src/MainWindow.py:181
+msgid "Save a File"
+msgstr "Guardar um ficheiro"
+
+#: src/MainWindow.py:204
+msgid "Enter a Secret"
+msgstr "Introduza uma senha"
+
+#: src/MainWindow.py:216
+msgid "Enter your key here"
+msgstr "Introduza aqui a sua chave"
+
+#: src/gui.py:17
+msgid "Pin Login Settings"
+msgstr "Definições de acesso PIN"
+
+#: src/gui.py:42
+msgid "Pin is not available."
+msgstr "O PIN não está disponível."
+
+#: src/gui.py:44
+msgid "Generate a new Pin"
+msgstr "Gerar um novo PIN"
+
+#: src/gui.py:47
+msgid "Import Pin from File"
+msgstr "Importar PIN de um ficheiro"
+
+#: src/gui.py:51
+msgid "Generate Pin from key"
+msgstr "Gerar PIN a partir da chave"
+
+#: src/gui.py:60
+msgid "Pin available."
+msgstr "PIN disponível."
+
+#: src/gui.py:62
+msgid "Show Pin QR/Key"
+msgstr "Mostrar PIN QR/Chave"
+
+#: src/gui.py:65
+msgid "Export Pin to file"
+msgstr "Exportar PIN para ficheiro"
+
+#: src/gui.py:68
+msgid "Remove Pin"
+msgstr "Remover PIN"
+
+#: src/gui.py:88
+msgid "Back"
+msgstr "Voltar"
+
+#: src/gui.py:89
+msgid "Help"
+msgstr "Ajuda"
